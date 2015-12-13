@@ -8,6 +8,8 @@
  */
 namespace Phospr;
 
+use \DateTime;
+
 /**
  * MonthYear
  *
@@ -61,6 +63,38 @@ class MonthYear
     }
 
     /**
+     * Create MonthYear from DateTime
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  0.1.0
+     *
+     * @param DateTime $dateTime
+     *
+     * @return MonthYear
+     */
+    public static function fromDateTime(DateTime $dateTime)
+    {
+        $monthYear = new MonthYear();
+        $monthYear->month = (int) $dateTime->format('n');
+        $monthYear->year = (int) $dateTime->format('Y');
+
+        return $monthYear;
+    }
+
+    /**
+     * Create MonthYear from current (system) DateTime
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  0.1.0
+     *
+     * @return MonthYear
+     */
+    public static function current()
+    {
+        return self::fromDateTime(new \DateTime());
+    }
+
+    /**
      * Get month
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
@@ -84,5 +118,39 @@ class MonthYear
     public function getYear()
     {
         return $this->year;
+    }
+
+    /**
+     * Whether the given MonthYear is considered equal to this one
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  0.1.0
+     *
+     * @param MonthYear $monthYear
+     *
+     * @return bool
+     */
+    public function equals(MonthYear $other)
+    {
+        return
+            $this->getYear() == $other->getYear() &&
+            $this->getMonth() == $other->getMonth();
+    }
+
+    /**
+     * Whether this MonthYear is greater than the given one
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  0.1.0
+     *
+     * @param MonthYear $monthYear
+     *
+     * @return bool
+     */
+    public function greaterThan(MonthYear $other)
+    {
+        return
+            $this->getYear() >= $other->getYear() &&
+            $this->getMonth() > $other->getMonth();
     }
 }
