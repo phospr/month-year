@@ -6,6 +6,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Phospr;
 
 use \DateTime;
@@ -16,7 +17,7 @@ use \DateTime;
  * A representation of a Month-Year pair, e.g. November 2015, October 1976, etc
  *
  * @author Tom Haskins-Vaughan <tom@tomhv.uk>
- * @since  0.1.0
+ * @since  1.0.0
  */
 class MonthYear
 {
@@ -38,7 +39,7 @@ class MonthYear
      * Construct
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      */
     private function __construct() {}
 
@@ -46,7 +47,7 @@ class MonthYear
      * Create MonthYear given month and year
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @param int $month
      * @param int $year
@@ -66,7 +67,7 @@ class MonthYear
      * Create MonthYear from DateTime
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @param DateTime $dateTime
      *
@@ -85,7 +86,7 @@ class MonthYear
      * Create MonthYear from current (system) DateTime
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @return MonthYear
      */
@@ -98,7 +99,7 @@ class MonthYear
      * Get month
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @return int
      */
@@ -111,7 +112,7 @@ class MonthYear
      * Get year
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @return int
      */
@@ -124,7 +125,7 @@ class MonthYear
      * Whether the given MonthYear is considered equal to this one
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @param MonthYear $monthYear
      *
@@ -141,7 +142,7 @@ class MonthYear
      * Whether this MonthYear is greater than the given one
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  0.1.0
+     * @since  1.0.0
      *
      * @param MonthYear $monthYear
      *
@@ -150,7 +151,10 @@ class MonthYear
     public function greaterThan(MonthYear $other)
     {
         return
-            $this->getYear() >= $other->getYear() &&
-            $this->getMonth() > $other->getMonth();
+            $this->getYear() > $other->getYear() ||
+
+            $this->getYear() == $other->getYear() &&
+            $this->getMonth() > $other->getMonth()
+        ;
     }
 }
