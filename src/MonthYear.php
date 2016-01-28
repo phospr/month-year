@@ -83,19 +83,6 @@ class MonthYear
     }
 
     /**
-     * Create MonthYear from current (system) DateTime
-     *
-     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
-     * @since  1.0.0
-     *
-     * @return MonthYear
-     */
-    public static function current()
-    {
-        return self::fromDateTime(new \DateTime());
-    }
-
-    /**
      * Get month
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
