@@ -11,7 +11,8 @@ before_script:
   - mkdir -p build/logs
   - composer require satooshi/php-coveralls:~0.6@stable
 
-script: vendor/bin/phpunit --colors tests
+script:
+  - vendor/bin/phpunit --colors tests
   - phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
