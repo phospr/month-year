@@ -9,6 +9,7 @@
 
 namespace Phospr\Tests;
 
+use DateTime;
 use Phospr\MonthYear;
 
 /**
@@ -19,6 +20,50 @@ use Phospr\MonthYear;
  */
 class MonthYearTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Test fromMonthAndYear
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     */
+    public function testFromMonthAndYear()
+    {
+        $monthYear = MonthYear::fromMonthAndYear(10, 1976);
+
+        $this->assertSame(10, $monthYear->getMonth());
+        $this->assertSame(1976, $monthYear->getYear());
+    }
+
+    /**
+     * Test fromDateTime
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     */
+    public function testFromDateTime()
+    {
+        $dateTime = new DateTime();
+
+        $monthYear = MonthYear::fromDateTime($dateTime);
+
+        $this->assertSame((int) $dateTime->format('n'), $monthYear->getMonth());
+        $this->assertSame((int) $dateTime->format('Y'), $monthYear->getYear());
+    }
+
+    /**
+     * Test equals
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     */
+    public function testEquals()
+    {
+        $monthYear = MonthYear::fromMonthAndYear(10, 2015);
+        $other = MonthYear::fromMonthAndYear(10, 2015);
+
+        $this->assertTrue($monthYear->equals($other));
+    }
+
     /**
      * Test greaterThan()
      *
