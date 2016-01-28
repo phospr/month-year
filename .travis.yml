@@ -13,7 +13,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit --colors tests
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests
 
 after_success:
   - php vendor/bin/coveralls -v
