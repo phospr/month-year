@@ -1,6 +1,7 @@
 # MonthYear
 
 [![Build Status](https://travis-ci.org/phospr/month-year.svg)](https://travis-ci.org/phospr/month-year)
+[![Coverage Status](https://coveralls.io/repos/github/phospr/month-year/badge.svg)](https://coveralls.io/github/phospr/month-year)
 
 That's it. Just a month-year pair.
 
