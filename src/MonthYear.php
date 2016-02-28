@@ -120,6 +120,21 @@ class MonthYear
      */
     public function equals(MonthYear $other)
     {
+        return $this->isSameValueAs();
+    }
+
+    /**
+     * Whether the given MonthYear is considered equal to this one
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @param MonthYear $monthYear
+     *
+     * @return bool
+     */
+    public function isSameValueAs(MonthYear $other)
+    {
         return
             $this->getYear() == $other->getYear() &&
             $this->getMonth() == $other->getMonth();
