@@ -120,7 +120,7 @@ class MonthYear
      */
     public function equals(MonthYear $other)
     {
-        return $this->isSameValueAs();
+        return $this->isSameValueAs($other);
     }
 
     /**
