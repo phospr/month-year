@@ -44,6 +44,23 @@ class MonthYear
     private function __construct() {}
 
     /**
+     * __toString
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf(
+            '%s-%02d',
+            $this->getYear(),
+            $this->getMonth()
+        );
+    }
+
+    /**
      * Create MonthYear given month and year
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
@@ -106,6 +123,23 @@ class MonthYear
     public function getYear()
     {
         return $this->year;
+    }
+
+    /**
+     * Get first of month
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @return DateTime
+     */
+    public function getFirstOfMonth()
+    {
+        return new DateTime(sprintf(
+            '%s-%s-01',
+            $this->getYear(),
+            round($this->getMonth(), 2)
+        ));
     }
 
     /**

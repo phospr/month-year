@@ -65,6 +65,20 @@ class MonthYearTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test isSameValueAs()
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     */
+    public function testIsSameValueAs()
+    {
+        $monthYear = MonthYear::fromMonthAndYear(10, 2015);
+        $other = MonthYear::fromMonthAndYear(10, 2015);
+
+        $this->assertTrue($monthYear->isSameValueAs($other));
+    }
+
+    /**
      * Test greaterThan()
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
@@ -89,6 +103,35 @@ class MonthYearTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test __toString()
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     */
+    public function testToString()
+    {
+        $monthYear = MonthYear::fromMonthAndYear(1,2017);
+
+        $this->assertSame('2017-01', (string) $monthYear);
+    }
+
+    /**
+     * Test getFirstOfMonth()
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @dataProvider getFirstOfMonthProvider
+     */
+    public function testGetFirstOfMonth(MonthYear $monthYear, $dateString)
+    {
+        $this->assertSame(
+            $dateString,
+            $monthYear->getFirstOfMonth()->format('Y-m-d')
+        );
+    }
+
+    /**
      * greaterThan provider
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
@@ -105,6 +148,23 @@ class MonthYearTest extends \PHPUnit_Framework_TestCase
             [2, 2015, 2, 2015, false],
             [1, 2015, 2, 2015, false],
             [1, 2015, 10, 2015, false],
+        ];
+    }
+
+    /**
+     * getFirstOfMonth provider
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @return array
+     */
+    public static function getFirstOfMonthProvider()
+    {
+        return [
+            [MonthYear::fromMonthAndYear(2,2016), '2016-02-01'],
+            [MonthYear::fromMonthAndYear(12,2016), '2016-12-01'],
+            [MonthYear::fromDateTime(new DateTime('2015-10-04')), '2015-10-01'],
         ];
     }
 }
