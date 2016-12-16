@@ -195,7 +195,7 @@ class MonthYear
     }
 
     /**
-     * Get the quarter for this MoneyYear
+     * Get the quarter for this MonthYear
      *
      *  Month | Quarter
      * -------+---------
