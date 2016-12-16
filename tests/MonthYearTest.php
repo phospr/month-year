@@ -132,6 +132,22 @@ class MonthYearTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test getQuarter()
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @dataProvider getQuarterProvider
+     */
+    public function testGetQuarter($month, $year, $quarter)
+    {
+        $this->assertSame(
+            $quarter,
+            MonthYear::fromMonthAndYear($month, $year)->getQuarter()
+        );
+    }
+
+    /**
      * greaterThan provider
      *
      * @author Tom Haskins-Vaughan <tom@tomhv.uk>
@@ -165,6 +181,44 @@ class MonthYearTest extends \PHPUnit_Framework_TestCase
             [MonthYear::fromMonthAndYear(2,2016), '2016-02-01'],
             [MonthYear::fromMonthAndYear(12,2016), '2016-12-01'],
             [MonthYear::fromDateTime(new DateTime('2015-10-04')), '2015-10-01'],
+        ];
+    }
+
+    /**
+     * getQuarter provider
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @return array
+     */
+    public static function getQuarterProvider()
+    {
+        return [
+            [1, 2016, 1],
+            [2, 2016, 1],
+            [3, 2016, 1],
+            [4, 2016, 2],
+            [5, 2016, 2],
+            [6, 2016, 2],
+            [7, 2016, 3],
+            [8, 2016, 3],
+            [9, 2016, 3],
+            [10, 2016, 4],
+            [11, 2016, 4],
+            [12, 2016, 4],
+            [1, 2019, 1],
+            [2, 2012, 1],
+            [3, 2009, 1],
+            [4, 1947, 2],
+            [5, 1921, 2],
+            [6, 2032, 2],
+            [7, 2053, 3],
+            [8, 2062, 3],
+            [9, 2048, 3],
+            [10, 2021, 4],
+            [11, 2052, 4],
+            [12, 2048, 4],
         ];
     }
 }
