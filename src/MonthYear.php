@@ -9,7 +9,7 @@
 
 namespace Phospr;
 
-use \DateTime;
+use DateTime;
 
 /**
  * MonthYear
@@ -192,5 +192,33 @@ class MonthYear
             $this->getYear() == $other->getYear() &&
             $this->getMonth() > $other->getMonth()
         ;
+    }
+
+    /**
+     * Get the quarter for this MonthYear
+     *
+     *  Month | Quarter
+     * -------+---------
+     *  Jan   |    1
+     *  Feb   |    1
+     *  Mar   |    1
+     *  Apr   |    2
+     *  May   |    2
+     *  Jun   |    2
+     *  Jul   |    3
+     *  Aug   |    3
+     *  Sep   |    3
+     *  Oct   |    4
+     *  Nov   |    4
+     *  Dec   |    4
+     *
+     * @author Tom Haskins-Vaughan <tom@tomhv.uk>
+     * @since  1.0.0
+     *
+     * @return int
+     */
+    public function getQuarter()
+    {
+        return (int) ceil($this->getMonth()/3);
     }
 }
